@@ -1,5 +1,21 @@
 apply plugin: 'groovy'
 apply plugin: 'idea'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.eneset.mdj1000.Main'
+    }
+}
 
 repositories {
     jcenter()

@@ -6,10 +6,11 @@ import org.slf4j.Logger;
 class Main {
     static Logger log = LoggerFactory.getLogger(Main.class)
 
-    static main(String[] args) {
+    public static void main(String[] args) {
 
         if (args.size() != 1 || args[0].isEmpty()) {
             println 'Usage: gemini-tools <path to usb stick>'
+            System.exit(-1)
         }
 
         log.info('Gemini MDJ-1000 Tool, Version 1.0')
