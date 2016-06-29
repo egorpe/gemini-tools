@@ -55,10 +55,9 @@ class GeminiDatabase {
         conn.close()
     }
 
-    void updateCover(String id, boolean haveCover) {
-        String haveCoverValue = haveCover ? 'yes' : 'no'
+    void updateCover(String id) {
         Statement stat = conn.createStatement()
-        stat.executeUpdate('update outer_table set have_cover="' + haveCoverValue + '" where id="' + id + '"')
+        stat.executeUpdate('update outer_table set have_cover=NULL where id="' + id + '"')
         stat.close()
     }
 

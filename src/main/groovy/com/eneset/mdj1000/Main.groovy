@@ -23,7 +23,7 @@ class Main {
 
         tracks.each { Track track ->
             TrackProcessor proc = new TrackProcessor(args[0], track, db)
-            proc.updateArtwork()
+            db.updateCover(track.id)
             proc.updateFilename()
         }
 
