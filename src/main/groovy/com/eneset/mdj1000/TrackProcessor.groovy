@@ -28,14 +28,14 @@ class TrackProcessor {
     void updateFilename() {
         String fileName = FilenameUtils.getName(track.originalPath)
         String filePath = FilenameUtils.getPath(track.originalPath)
-        String newFilePath = (this.path + File.separator + filePath + track.bpm + ',' + track.key + '-' + fileName)
-        if (fileName.startsWith(track.bpm + ',' + track.key)) {
+        String newFilePath = (this.path + File.separator + filePath + track.key + ',' + track.bpm + '-' + fileName)
+        if (fileName.startsWith(track.key + ',' + track.bpm)) {
             log.info('File has already been renamed')
         } else {
-            log.info('New filename is "{},{}-{}"', track.bpm, track.key, fileName)
+            log.info('New filename is "{},{}-{}"', track.key, track.bpm, fileName)
             log.info('Moving to {}', newFilePath)
             FileUtils.moveFile(new File(this.path + File.separator + track.originalPath), new File(newFilePath))
-            db.updateFilename(track.id, File.separator + filePath + track.bpm + ',' + track.key + '-' + fileName)
+            db.updateFilename(track.id, File.separator + filePath + track.key + ',' + track.bpm + '-' + fileName)
         }
     }
 
